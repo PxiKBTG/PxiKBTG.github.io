@@ -1,177 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Search Puzzle</title>
+    <title>Let's Check your Culture DNA</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            line-height: 1.6;
             margin: 0;
-            background-color: #f0f0f0;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-        .game-container {
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
             text-align: center;
         }
-        .grid {
-            display: inline-grid;
-            grid-template-columns: repeat(20, 30px);
-            gap: 1px;
-            background-color: #ddd;
-            padding: 10px;
-            border-radius: 5px;
+        .question {
+            margin-bottom: 20px;
         }
-        .cell {
-            width: 30px;
-            height: 30px;
-            background-color: white;
+        .rating {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .rating label {
+            flex: 1;
+            text-align: center;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
-        .cell.selected {
-            background-color: #ffcc00;
+        button:hover {
+            background-color: #45a049;
         }
-        .cell.found {
-            background-color: #90EE90;
-        }
-        .word-list {
+        #result {
             margin-top: 20px;
-        }
-        .word {
-            display: inline-block;
-            margin: 5px;
-            padding: 5px 10px;
-            background-color: #e0e0e0;
-            border-radius: 3px;
-        }
-        .word.found {
-            background-color: #90EE90;
-            text-decoration: line-through;
+            font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="game-container">
-        <div class="grid" id="grid"></div>
-        <div class="word-list" id="wordList"></div>
+    <div class="container">
+        <h1>Let's Check your Culture DNA</h1>
+        <form id="surveyForm">
+            <div class="question">
+                <p><strong>Purposeful excellence</strong></p>
+                <p>1. ฉันชอบที่จะตั้งคำถามถึงวัตถุประสงค์ของทุกงานที่ฉันได้รับมอบหมาย</p>
+                <div class="rating">
+                    <label><input type="radio" name="q1" value="1" required> 1</label>
+                    <label><input type="radio" name="q1" value="2"> 2</label>
+                    <label><input type="radio" name="q1" value="3"> 3</label>
+                    <label><input type="radio" name="q1" value="4"> 4</label>
+                    <label><input type="radio" name="q1" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. ฉันมักวางแผนการทำงานอย่างเป็นระบบ</p>
+                <div class="rating">
+                    <label><input type="radio" name="q2" value="1" required> 1</label>
+                    <label><input type="radio" name="q2" value="2"> 2</label>
+                    <label><input type="radio" name="q2" value="3"> 3</label>
+                    <label><input type="radio" name="q2" value="4"> 4</label>
+                    <label><input type="radio" name="q2" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. ฉันรู้สึกว่าทุกงานที่ด้รับมอบหมาย คือเป้นสิ่งที่ฉันต้องรับผิดชอบทำมันให้สำเร็จ</p>
+                <div class="rating">
+                    <label><input type="radio" name="q3" value="1" required> 1</label>
+                    <label><input type="radio" name="q3" value="2"> 2</label>
+                    <label><input type="radio" name="q3" value="3"> 3</label>
+                    <label><input type="radio" name="q3" value="4"> 4</label>
+                    <label><input type="radio" name="q3" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>Innovative excellence</strong></p>
+                <p>4. ฉันคิดว่าตัวฉันเองเป็นคนที่ชอบเรียนรู้อยู่ตลอดเวลา</p>
+                <div class="rating">
+                    <label><input type="radio" name="q4" value="1" required> 1</label>
+                    <label><input type="radio" name="q4" value="2"> 2</label>
+                    <label><input type="radio" name="q4" value="3"> 3</label>
+                    <label><input type="radio" name="q4" value="4"> 4</label>
+                    <label><input type="radio" name="q4" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>5. ฉันชอบคิดริเริ่มสิ่งใหม่ๆ หรือวิธีการทำงานเพื่อให้ได้ผลลัพธ์ที่ดีชึ้น</p>
+                <div class="rating">
+                    <label><input type="radio" name="q5" value="1" required> 1</label>
+                    <label><input type="radio" name="q5" value="2"> 2</label>
+                    <label><input type="radio" name="q5" value="3"> 3</label>
+                    <label><input type="radio" name="q5" value="4"> 4</label>
+                    <label><input type="radio" name="q5" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>Collaborative excellence</strong></p>
+                <p>6. ฉันให้ความสำคัญความรู้สึกของคนที่ฉันต้องทำงานร่วมด้วย</p>
+                <div class="rating">
+                    <label><input type="radio" name="q6" value="1" required> 1</label>
+                    <label><input type="radio" name="q6" value="2"> 2</label>
+                    <label><input type="radio" name="q6" value="3"> 3</label>
+                    <label><input type="radio" name="q6" value="4"> 4</label>
+                    <label><input type="radio" name="q6" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>7. ฉันชอบในการสื่อสารกับผู้อื่น</p>
+                <div class="rating">
+                    <label><input type="radio" name="q7" value="1" required> 1</label>
+                    <label><input type="radio" name="q7" value="2"> 2</label>
+                    <label><input type="radio" name="q7" value="3"> 3</label>
+                    <label><input type="radio" name="q7" value="4"> 4</label>
+                    <label><input type="radio" name="q7" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>8. ฉันมองว่าทุกคนมีความสามารถและฉันสามารถประสานความร่วมมือจากพวกเขาได้</p>
+                <div class="rating">
+                    <label><input type="radio" name="q8" value="1" required> 1</label>
+                    <label><input type="radio" name="q8" value="2"> 2</label>
+                    <label><input type="radio" name="q8" value="3"> 3</label>
+                    <label><input type="radio" name="q8" value="4"> 4</label>
+                    <label><input type="radio" name="q8" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>Positive excellence</strong></p>
+                <p>9. ฉันมักให้เวลากับตัวเอง ในการดูแลใจ และสุขภาพตัวเองอย่างสม่ำเสมอ</p>
+                <div class="rating">
+                    <label><input type="radio" name="q9" value="1" required> 1</label>
+                    <label><input type="radio" name="q9" value="2"> 2</label>
+                    <label><input type="radio" name="q9" value="3"> 3</label>
+                    <label><input type="radio" name="q9" value="4"> 4</label>
+                    <label><input type="radio" name="q9" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>10. ฉันเชื่อว่าทุกอุปสรรคคือความท้าทายที่ฉันสามารถเอาชนะได้</p>
+                <div class="rating">
+                    <label><input type="radio" name="q10" value="1" required> 1</label>
+                    <label><input type="radio" name="q10" value="2"> 2</label>
+                    <label><input type="radio" name="q10" value="3"> 3</label>
+                    <label><input type="radio" name="q10" value="4"> 4</label>
+                    <label><input type="radio" name="q10" value="5"> 5</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>11. ฉันชื่นชมผู้อื่น เมื่อฉันเห็นควานสำเร็จของเขาเหล่านั้นที่ทำสิ่งต่างๆ ได้สำเร็จ</p>
+                <div class="rating">
+                    <label><input type="radio" name="q11" value="1" required> 1</label>
+                    <label><input type="radio" name="q11" value="2"> 2</label>
+                    <label><input type="radio" name="q11" value="3"> 3</label>
+                    <label><input type="radio" name="q11" value="4"> 4</label>
+                    <label><input type="radio" name="q11" value="5"> 5</label>
+                </div>
+            </div>
+
+            <button type="submit">ส่งแบบสำรวจ</button>
+        </form>
+
+        <div id="result"></div>
     </div>
 
     <script>
-        const words = ['CONNECTIVITY', 'CELEBRATION', 'OPTIMISM', 'OPENMINDED', 'PRACTICALLITY'];
-        const gridSize = 20;
-        let grid = [];
-        let selectedCells = [];
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const scores = {
+                purposeful: (parseInt(formData.get('q1')) + parseInt(formData.get('q2')) + parseInt(formData.get('q3'))) / 3,
+                innovative: (parseInt(formData.get('q4')) + parseInt(formData.get('q5'))) / 2,
+                collaborative: (parseInt(formData.get('q6')) + parseInt(formData.get('q7')) + parseInt(formData.get('q8'))) / 3,
+                positive: (parseInt(formData.get('q9')) + parseInt(formData.get('q10')) + parseInt(formData.get('q11'))) / 3
+            };
 
-        function initializeGrid() {
-            const gridElement = document.getElementById('grid');
-            for (let i = 0; i < gridSize; i++) {
-                grid[i] = [];
-                for (let j = 0; j < gridSize; j++) {
-                    const cell = document.createElement('div');
-                    cell.classList.add('cell');
-                    cell.dataset.row = i;
-                    cell.dataset.col = j;
-                    cell.addEventListener('click', handleCellClick);
-                    gridElement.appendChild(cell);
-                    grid[i][j] = cell;
-                }
-            }
-        }
+            const highestScore = Math.max(...Object.values(scores));
+            const highestCoreValue = Object.keys(scores).find(key => scores[key] === highestScore);
 
-        function placeWords() {
-            words.forEach(word => {
-                let placed = false;
-                while (!placed) {
-                    const direction = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-                    const row = Math.floor(Math.random() * gridSize);
-                    const col = Math.floor(Math.random() * gridSize);
-                    if (canPlaceWord(word, row, col, direction)) {
-                        placeWord(word, row, col, direction);
-                        placed = true;
-                    }
-                }
-            });
-        }
+            const coreValueNames = {
+                purposeful: "Purposeful excellence",
+                innovative: "Innovative excellence",
+                collaborative: "Collaborative excellence",
+                positive: "Positive excellence"
+            };
 
-        function canPlaceWord(word, row, col, direction) {
-            if (direction === 'horizontal' && col + word.length > gridSize) return false;
-            if (direction === 'vertical' && row + word.length > gridSize) return false;
-
-            for (let i = 0; i < word.length; i++) {
-                const cell = direction === 'horizontal' ? grid[row][col + i] : grid[row + i][col];
-                if (cell.textContent && cell.textContent !== word[i]) return false;
-            }
-            return true;
-        }
-
-        function placeWord(word, row, col, direction) {
-            for (let i = 0; i < word.length; i++) {
-                const cell = direction === 'horizontal' ? grid[row][col + i] : grid[row + i][col];
-                cell.textContent = word[i];
-            }
-        }
-
-        function fillRemainingCells() {
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            for (let i = 0; i < gridSize; i++) {
-                for (let j = 0; j < gridSize; j++) {
-                    if (!grid[i][j].textContent) {
-                        grid[i][j].textContent = alphabet[Math.floor(Math.random() * alphabet.length)];
-                    }
-                }
-            }
-        }
-
-        function handleCellClick(event) {
-            const cell = event.target;
-            cell.classList.toggle('selected');
-            if (cell.classList.contains('selected')) {
-                selectedCells.push(cell);
-            } else {
-                selectedCells = selectedCells.filter(c => c !== cell);
-            }
-            checkWord();
-        }
-
-        function checkWord() {
-            const selectedWord = selectedCells.map(cell => cell.textContent).join('');
-            const wordElement = document.querySelector(`.word[data-word="${selectedWord}"]`);
-            if (wordElement && !wordElement.classList.contains('found')) {
-                wordElement.classList.add('found');
-                selectedCells.forEach(cell => {
-                    cell.classList.remove('selected');
-                    cell.classList.add('found');
-                });
-                selectedCells = [];
-            }
-        }
-
-        function createWordList() {
-            const wordListElement = document.getElementById('wordList');
-            words.forEach(word => {
-                const wordElement = document.createElement('span');
-                wordElement.classList.add('word');
-                wordElement.textContent = word;
-                wordElement.dataset.word = word;
-                wordListElement.appendChild(wordElement);
-            });
-        }
-
-        function initializeGame() {
-            initializeGrid();
-            placeWords();
-            fillRemainingCells();
-            createWordList();
-        }
-
-        initializeGame();
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `คุณมี core values ที่โดดเด่นที่สุดคือ: <strong>${coreValueNames[highestCoreValue]}</strong>`;
+        });
     </script>
 </body>
 </html>
