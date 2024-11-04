@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#stock-form, #stock-list {
+    margin: 20px auto;
+    width: 300px;
+}
+
+input, button {
+    margin: 5px;
+    padding: 10px;
+}
